@@ -47,15 +47,21 @@ def main():
 
     logo_url = 'https://github.com/pedrosale/falcon_test/raw/a7248c8951827efd997b927d7a4d4c4c200c1996/logo_det3.png'
 
-    st.title("Detran + OpenAI: Pergunte do CTB")
+    st.title("Detran + OpenAI = CTB + Wiki")
     st.image(logo_url, width=45)  # Ajuste a largura conforme necessário
-    st.markdown('**Esta versão contém:**  \nA) Modelo OpenAI;  \nB) Conjunto de dados pré-carregados do CTB [Arquivo de Contexto](https://raw.githubusercontent.com/pedrosale/falcon_test/main/CTB3.txt);  \nC) ["Retrieval Augmented Generation"](https://python.langchain.com/docs/use_cases/question_answering/) a partir dos dados carregados (em B.) com Langchain.')
+    st.markdown('**Esta versão contém:**  \nA) Modelo OpenAI;  \nB) Conjunto de dados pré-carregados;  \nC) ["Retrieval Augmented Generation"](https://python.langchain.com/docs/use_cases/question_answering/) a partir dos dados carregados (em B.) com Langchain.')
 
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
 
     file_path1 = "https://raw.githubusercontent.com/pedrosale/falcon_test/main/CTB3.txt"
-    text = load_text_from_url(file_path1)
+    text1 = load_text_from_url(file_path1)
+
+    file_path2 = "https://raw.githubusercontent.com/pedrosale/falcon_test/main/arq.txt"
+    file_path2 = load_text_from_url(file_path2)
+    
+    text = text1 + text2
+    
     knowledgeBase = process_text(text)
 
     # Substitua o campo de entrada de texto e o botão por um formulário
