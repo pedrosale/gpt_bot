@@ -14,7 +14,7 @@ import langchain
 langchain.verbose = False
 
 # Carrega as variáveis de ambiente
-load_dotenv(r"C:\Users\pedro_amorim\Desktop\gpt\.env")
+load_dotenv()
 
 def load_text_from_url(url):
     with tempfile.NamedTemporaryFile(delete=False) as temp_file:
