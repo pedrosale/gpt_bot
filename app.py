@@ -58,7 +58,7 @@ def main():
     text1 = load_text_from_url(file_path1)
 
     file_path2 = "https://raw.githubusercontent.com/pedrosale/falcon_test/main/arq.txt"
-    file_path2 = load_text_from_url(file_path2)
+    text2 = load_text_from_url(file_path2)
     
     text = text1 + text2
     
