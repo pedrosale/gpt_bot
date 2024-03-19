@@ -14,7 +14,7 @@ import langchain
 langchain.verbose = False
 
 # Carrega as variáveis de ambiente
-load_dotenv()
+load_dotenv()  # Isso carregará as variáveis de ambiente do arquivo .env no diretório atual
 
 def load_text_from_url(url):
     with tempfile.NamedTemporaryFile(delete=False) as temp_file:
