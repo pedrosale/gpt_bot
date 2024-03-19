@@ -47,7 +47,7 @@ def main():
 
     logo_url = 'https://github.com/pedrosale/falcon_test/raw/a7248c8951827efd997b927d7a4d4c4c200c1996/logo_det3.png'
 
-    st.title("Detran + OpenAI = CTB + Wiki")
+    st.title("Detran + OpenAI 💬 CTB + Wiki")
     st.image(logo_url, width=45)  # Ajuste a largura conforme necessário
     st.markdown('**Esta versão contém:**  \nA) Modelo OpenAI;  \nB) Conjunto de dados pré-carregados;  \nC) ["Retrieval Augmented Generation"](https://python.langchain.com/docs/use_cases/question_answering/) a partir dos dados carregados (em B.) com Langchain.')
 
