@@ -49,7 +49,7 @@ def main():
 
     st.title("Detran + OpenAI 💬 CTB")
     st.image(logo_url, width=45)  # Ajuste a largura conforme necessário
-    st.markdown('**Esta versão contém:**  \nA) Modelo OpenAI;  \nB) Conjunto de dados pré-carregados;  \nC) ["Retrieval Augmented Generation"](https://python.langchain.com/docs/use_cases/question_answering/) a partir dos dados carregados (em B.) com Langchain.')
+    st.markdown('**Esta versão contém:**  \nA) Modelo OpenAI;  \nB) Conjunto de dados pré-carregados;  \nC) ["Retrieval Augmented Generation"](https://python.langchain.com/docs/use_cases/question_answering/) a partir dos dados carregados.')
 
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
