@@ -66,7 +66,7 @@ def main():
 
     if send_button and query:
         docs = knowledgeBase.similarity_search(query)
-        llm = OpenAI(openai_api_key=os.environ.get("OPENAI_API_KEY"))
+        llm = OpenAItemperature=0.01, top_p = 1, (openai_api_key=os.environ.get("OPENAI_API_KEY"))
         chain = load_qa_chain(llm, chain_type="stuff")
 
         with get_openai_callback() as cost:
