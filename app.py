@@ -11,6 +11,7 @@ import tempfile
 import urllib.request
 import langchain
 from langchain.chat_models import ChatOpenAI
+from streamlit_chat import message as chat_message
 
 langchain.verbose = False
 
@@ -37,19 +38,9 @@ def process_text(text):
     knowledge_base = FAISS.from_texts(chunks, embeddings)
     return knowledge_base
 
+# Substitua a função message do seu código pela seguinte:
 def message(content, is_user=False, key=None, logo_url=None):
-    col1, col2 = st.columns([1, 5])
-    if is_user:
-        # Mensagem do usuário à direita
-        with col2:
-            st.text_area("", value=content, height=100, key=key, help="Pergunta do usuário")
-    else:
-        # Logo e mensagem do assistente à esquerda
-        with col1:
-            if logo_url:
-                st.image(logo_url, width=30)
-        with col2:
-            st.text_area("", value=content, height=100, key=key, help="Resposta do assistente", disabled=True)
+    chat_message(body=content, is_user=is_user, key=key, avatar=logo_url)
 
 
 def main():
@@ -87,7 +78,13 @@ def main():
     for chat in st.session_state.chat_history:
         message("Pergunta: " + chat["pergunta"], is_user=True)
         message("Resposta: " + chat["resposta"], is_user=False, logo_url=logo_url)
-        st.text("---")  # Linha separadora
+        st.text("---")  # Linha separadora 
+
+    for chat in st.session_state.chat_history:
+        message(chat["pergunta"], is_user=True)
+        message(chat["resposta"], is_user=False, logo_url=logo_url)
+
+
 
 if __name__ == "__main__":
   main()
