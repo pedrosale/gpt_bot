@@ -11,7 +11,7 @@ import tempfile
 import urllib.request
 import langchain
 from langchain.chat_models import ChatOpenAI
-from streamlit_chat import message as chat_message
+from streamlit_chat import message
 
 langchain.verbose = False
 
