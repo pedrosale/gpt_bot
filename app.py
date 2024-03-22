@@ -75,16 +75,11 @@ def main():
         st.session_state.chat_history.append({"pergunta": query, "resposta": response["output_text"]})
 
     # Exibe o histórico de conversas
-    for chat in st.session_state.chat_history:
-        message("Pergunta: " + chat["pergunta"], is_user=True)
-        message("Resposta: " + chat["resposta"], is_user=False, logo_url=logo_url)
-        st.text("---")  # Linha separadora 
 
     for chat in st.session_state.chat_history:
         message(chat["pergunta"], is_user=True)
         message(chat["resposta"], is_user=False, logo_url=logo_url)
 
-
-
+# Lembre-se de que este if __name__ == "__main__": deve estar no final de seu arquivo Python
 if __name__ == "__main__":
   main()
