@@ -10,6 +10,7 @@ from langchain.callbacks import get_openai_callback
 import tempfile
 import urllib.request
 import langchain
+from langchain.chat_models import ChatOpenAI
 
 langchain.verbose = False
 
@@ -32,7 +33,7 @@ def load_text_from_url(url):
 def process_text(text):
     text_splitter = CharacterTextSplitter(separator="\n", chunk_size=1000, chunk_overlap=500, length_function=len)
     chunks = text_splitter.split_text(text)
-    embeddings = OpenAIEmbeddings(openai_api_key=os.environ.get("OPENAI_API_KEY"))
+    embeddings = OpenAIEmbeddings(model="text-embedding-3-large",openai_api_key=os.environ.get("OPENAI_API_KEY"))
     knowledge_base = FAISS.from_texts(chunks, embeddings)
     return knowledge_base
 
@@ -66,7 +67,7 @@ def main():
 
     if send_button and query:
         docs = knowledgeBase.similarity_search(query)
-        llm = OpenAI(openai_api_key=os.environ.get("OPENAI_API_KEY"))
+        llm = ChatOpenAI(model_name="gpt-3.5-turbo-0125", temperature=1, max_tokens=1500,openai_api_key=os.environ.get("OPENAI_API_KEY"))
         chain = load_qa_chain(llm, chain_type="stuff")
 
         with get_openai_callback() as cost:
