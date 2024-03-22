@@ -38,11 +38,6 @@ def process_text(text):
     knowledge_base = FAISS.from_texts(chunks, embeddings)
     return knowledge_base
 
-# Substitua a função message do seu código pela seguinte:
-def message(content, is_user=False, key=None, logo_url=None):
-    chat_message(body=content, is_user=is_user, key=key, avatar=logo_url)
-
-
 def main():
 
     logo_url = 'https://github.com/pedrosale/falcon_test/raw/a7248c8951827efd997b927d7a4d4c4c200c1996/logo_det3.png'
