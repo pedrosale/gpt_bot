@@ -11,7 +11,6 @@ import tempfile
 import urllib.request
 import langchain
 from langchain.chat_models import ChatOpenAI
-from streamlit_chat import message
 
 langchain.verbose = False
 
@@ -37,6 +36,13 @@ def process_text(text):
     embeddings = OpenAIEmbeddings(model="text-embedding-3-large",openai_api_key=os.environ.get("OPENAI_API_KEY"))
     knowledge_base = FAISS.from_texts(chunks, embeddings)
     return knowledge_base
+
+def message(content, is_user=False, key=None, logo_url=None):
+    if is_user:
+        st.text(content)
+    else:
+        st.image(logo_url, width=30)
+        st.text(content)
 
 def main():
 
@@ -70,11 +76,10 @@ def main():
         st.session_state.chat_history.append({"pergunta": query, "resposta": response["output_text"]})
 
     # Exibe o histórico de conversas
-
     for chat in st.session_state.chat_history:
-        message(chat["pergunta"], is_user=True)
-        message(chat["resposta"], is_user=False, logo_url=logo_url)
+        message("Pergunta: " + chat["pergunta"], is_user=True)
+        message("Resposta: " + chat["resposta"], is_user=False, logo_url=logo_url)
+        st.text("---")  # Linha separadora
 
-# Lembre-se de que este if __name__ == "__main__": deve estar no final de seu arquivo Python
 if __name__ == "__main__":
   main()
