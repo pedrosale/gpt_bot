@@ -39,10 +39,10 @@ def process_text(text):
 
 def message(content, is_user=False, key=None, logo_url=None):
     if is_user:
-        st.text(content)
+        st.write(content)
     else:
         st.image(logo_url, width=30)
-        st.text(content)
+        st.write(content)
 
 def main():
 
