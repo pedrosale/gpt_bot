@@ -38,11 +38,19 @@ def process_text(text):
     return knowledge_base
 
 def message(content, is_user=False, key=None, logo_url=None):
+    col1, col2 = st.columns([1, 5])
     if is_user:
-        st.text(content)
+        # Mensagem do usuário à direita
+        with col2:
+            st.text_area("", value=content, height=100, key=key, help="Pergunta do usuário")
     else:
-        st.image(logo_url, width=30)
-        st.text(content)
+        # Logo e mensagem do assistente à esquerda
+        with col1:
+            if logo_url:
+                st.image(logo_url, width=30)
+        with col2:
+            st.text_area("", value=content, height=100, key=key, help="Resposta do assistente", disabled=True)
+
 
 def main():
 
